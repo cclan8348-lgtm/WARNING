@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Untuk Retina ❤️</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Arial',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+min-height:100vh;
+overflow-y:auto;
+overflow-x:hidden;
+text-align:center;
+}
+
+#intro{
+padding-top:40px;
+}
+
+#intro h2{
+color:white;
+margin-bottom:20px;
+}
+
+.slideshow{
+width:300px;
+height:450px;
+margin:auto;
+overflow:hidden;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.slideshow img{
+width:100%;
+height:100%;
+object-fit:cover;
+animation:fade 1s;
+}
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
+button{
+margin-top:25px;
+padding:15px 35px;
+border:none;
+border-radius:30px;
+font-size:18px;
+font-weight:bold;
+background:white;
+color:#ff4081;
+cursor:pointer;
+}
+
+.card{
+display:none;
+max-width:850px;
+margin:30px auto;
+background:white;
+padding:25px;
+border-radius:20px;
+box-shadow:0 5px 20px rgba(0,0,0,.2);
+}
+
+.card h1{
+color:#ff4081;
+margin-bottom:20px;
+}
+
+#typing{
+line-height:1.8;
+font-size:18px;
+min-height:180px;
+}
+
+.heart{
+position:fixed;
+top:-20px;
+animation:jatuh linear forwards;
+}
+
+@keyframes jatuh{
+to{
+transform:translateY(110vh);
+}
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="intro">
+
+<h2>✨ Aku Punya Sesuatu Untuk Kamu ✨</h2>
+
+<div class="slideshow">
+<img src="/foto1.jpg" id="slide">
+</div>
+
+<button onclick="bukaUcapan()">
+💖 Buka Sekarang
+</button>
+
+</div>
+
+<div class="card" id="card">
+
+<h1>🎂 Selamat Ulang Tahun Retina 🎂</h1>
+
+<p id="typing"></p>
+
+<br>
+
+<audio id="musik" controls autoplay loop>
+<source src="lagu.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<script>
+
+const foto = [
+"/foto1.jpg",
+"/foto2.jpg",
+"/foto3.jpg",
+"/foto4.jpg",
+"/foto5.jpg",
+"/foto6.jpg",
+"/foto7.jpg",
+"/foto8.jpg",
+"/foto9.jpg"
+];
+
+let current = 0;
+
+setInterval(()=>{
+
+current++;
+
+if(current >= foto.length){
+current = 0;
+}
+
+document.getElementById("slide").src=foto[current];
+
+},1000);
+
+const pesan =
+"🎂✨ Selamat Ulang Tahun, Retina ✨🎂Hari ini adalah hari yang spesial, karena pada hari inilah seseorang yang begitu berarti hadir ke dunia. Seseorang yang tanpa sadar telah membawa banyak warna, tawa, dan cerita yang membuat hari-hari terasa lebih berkesan.Selamat ulang tahun yaa. Semoga di usia yang baru ini kamu selalu diberikan kesehatan, kebahagiaan, keberkahan, dan kemudahan dalam setiap langkah yang kamu ambil. Semoga segala doa baik yang kamu panjatkan perlahan menjadi kenyataan, segala harapan yang kamu simpan menemukan jalannya, dan segala kesedihan yang pernah singgah tergantikan oleh kebahagiaan yang jauh lebih besar.Aku tahu hidup tidak selalu berjalan sesuai yang kita inginkan. Ada kalanya lelah datang tanpa permisi, ada kalanya air mata jatuh tanpa diketahui siapa pun. Tapi aku berharap kamu selalu ingat bahwa kamu adalah orang yang kuat. Kamu sudah berhasil melewati begitu banyak hal sampai berada di titik ini, dan itu adalah sesuatu yang patut dibanggakan.🌹Jika malam adalah rumah bagi bintang, maka senyummu adalah rumah bagi ketenanganku. Jika hujan mampu menyejukkan bumi, maka kehadiranmu mampu menenangkan hati.Tak perlu menjadi sempurna untuk terlihat istimewa, karena bagiku, dirimu yang apa adanya sudah lebih dari cukup.🎉🎁✨";
+
+let i = 0;
+
+function ketik(){
+
+if(i < pesan.length){
+
+document.getElementById("typing").innerHTML += pesan.charAt(i);
+
+i++;
+
+setTimeout(ketik,40);
+
+}
+
+}
+
+function bukaUcapan(){
+
+document.getElementById("intro").style.display="none";
+
+document.getElementById("card").style.display="block";
+
+document.getElementById("musik").play();
+
+ketik();
+
+setInterval(hati,300);
+
+}
+
+function hati(){
+
+const heart=document.createElement("div");
+
+heart.classList.add("heart");
+
+heart.innerHTML="❤️";
+
+heart.style.left=Math.random()*100+"vw";
+
+heart.style.fontSize=(Math.random()*25+15)+"px";
+
+heart.style.animationDuration=(Math.random()*3+3)+"s";
+
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+}
+
+</script>
+
+</body>
+</html>
